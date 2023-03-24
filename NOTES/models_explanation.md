@@ -22,3 +22,25 @@
 ### ORM (Object Relational Mapper)
 - Flexibility
 
+
+### models
+- In django models, `id` field is auto-created.
+
+### how to install `sqlite3` command line client on my windows machine?
+
+
+### how to access interactive shell in django?
+- In order to access your database entries in ORM way, django has provided a tool called `shell`
+- `python manage.py shell`
+- **HOW TO capture all the entries in django model?**
+```shell
+    >>> from jobs.models import Portal
+    >>> # ORM query to get all the enties in `Portal` Table
+    >>> Portal.objects.all()
+    <QuerySet [<Portal: Portal object (1)>, <Portal: Portal object (2)>]>
+    >>>
+```
+
+
+
+
