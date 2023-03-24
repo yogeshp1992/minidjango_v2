@@ -10,3 +10,6 @@ class Portal(models.Model):
 
     name = models.CharField(max_length=250, unique=True)
     description = models.CharField(max_length=250)
+
+    def __str__(self):
+        return str(self.id) + " portal - " + self.name
