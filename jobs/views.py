@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.http import JsonResponse
 from jobs.models import Portal, JobDescription
 
@@ -35,8 +35,7 @@ def get_portal_details(request):
 
 
 def get_job_description(request, job_id):
-    breakpoint()
-    jd = JobDescription.objects.get(pk=job_id)
+    jd = get_object_or_404(JobDescription, pk=job_id)
     return render(request, "jobs/job_description.html", {"job_desc": jd})
 
 
