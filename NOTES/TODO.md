@@ -15,3 +15,7 @@
 13. Check the results in admin interface
 14. play with your newly created model in admin interface
 15. play with your newly created model in django shell (`python manage.py shell`)
+
+16. Play with django admin interface and add multiple portals, jobtitles, jobdescriptions, applicants
+17. Play with django shell `python manage.py shell` and try out all ORM queries
+18. 

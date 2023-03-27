@@ -39,3 +39,8 @@ def get_job_description(request, job_id):
     return render(request, "jobs/job_description.html", {"job_desc": jd})
 
 
+# TODO 1 - write an API endpoint to get list of applicants (.../jobs/applicants)
+# TODO 2 - write an API endpoint to get details of
+#          single applicant (.../jobs/applicants/1)
+# TODO 3 - write an API endpoint to get list of applicants (.../jobs/jobtitles)
+
