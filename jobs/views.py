@@ -79,6 +79,9 @@ def job_titles(request):
         )
 
 
+# TODO - write PATCH request for `job_title` resource
+# TODO - write DELETE request for job_title` resource
+
 # Create your function based view like following -
 def welcome(request):
 
