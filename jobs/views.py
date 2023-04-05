@@ -66,8 +66,6 @@ def job_titles(request):
         else:
             portal = portal[0]
 
-        breakpoint()
-
         jd = data.get("job_description")
         jd_role = jd.get("role")
         jd_obj = JobDescription.objects.filter(role=jd_role)
