@@ -3,18 +3,8 @@ from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.http import JsonResponse
 from jobs.models import Portal, JobDescription, JobTitle
 from django.views.decorators.csrf import csrf_exempt
-
-
-# Create your views here.
-def welcome(request):
-
-    cricketers = ["virat", "dhoni", "rahul", "sachin"]
-
-    return render(
-        request,
-        "jobs/welcome.html",
-        {"message": "Good morning", "cricketers": cricketers}
-    )
+from django.http import HttpResponse
+from django.views import View
 
 
 def get_portal_details(request):
@@ -89,10 +79,33 @@ def job_titles(request):
         )
 
 
+# Create your function based view like following -
+def welcome(request):
+
+    cricketers = ["virat", "dhoni", "rahul", "sachin"]
+
+    return render(
+        request,
+        "jobs/welcome.html",
+        {"message": "Good morning", "cricketers": cricketers}
+    )
 
 
+# Create your class based view like following -
+class WelcomeView(View):
+    def get(self, request):
+        # <view logic>
+        return HttpResponse('welcome to first class based view')
 
+    @csrf_exempt
+    def post(self, request):
 
+        breakpoint()
 
+        # write your post view logic here
+        return HttpResponse("welcome to POST request using class based view")
 
+    def patch(self, request):
+        # write your PATCH request logic here
+        return HttpResponse("welcome to PATCH request using class based view")
 
