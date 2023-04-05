@@ -16,5 +16,6 @@ urlpatterns = [
     # keyword argument `name` is passed to path function
     # these are called as named URLs
     path("portals/", views.get_portal_details, name="portal_details"),
+    path("jobtitles/", views.job_titles, name="jobtitle"),
     path("jobtitles/<int:job_id>/", views.get_job_description, name="jd")
 ]
