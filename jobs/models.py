@@ -25,7 +25,7 @@ class Portal(models.Model):
     description = models.CharField(max_length=250)
 
     def __str__(self):
-        return str(self.id) + " portal - " + self.name
+        return str(self.id) + " portal - " + self.name+self.description
 
 
 class JobTitle(models.Model):

@@ -30,7 +30,6 @@ def get_portal_details(request):
     portals = []
     for obj in objs:
         portals.append(obj.name)
-
     return JsonResponse(portals, safe=False)
 
 
