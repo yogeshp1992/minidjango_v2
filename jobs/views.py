@@ -131,13 +131,16 @@ def welcome(request):
     )
 
 
+from django.utils.decorators import method_decorator
+
+
 # Create your class based view like following -
+@method_decorator(csrf_exempt, name='dispatch')
 class WelcomeView(View):
     def get(self, request):
         # <view logic>
         return HttpResponse('welcome to first class based view')
 
-    @csrf_exempt
     def post(self, request):
 
         breakpoint()
