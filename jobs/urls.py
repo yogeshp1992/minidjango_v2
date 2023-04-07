@@ -23,5 +23,7 @@ urlpatterns = [
 
     # class-based views using django generic views.
     path("v2/applicants/", views_2.ApplicantList.as_view(), name="v2-applicant-list"),
-    path("v2/applicants/create/", views_2.ApplicantCreate.as_view(), name="v2-applicant-create")
+    path("v2/applicants/create/", views_2.ApplicantCreate.as_view(), name="v2-applicant-create"),
+    path("v2/applicants/update/<int:pk>", views_2.ApplicantUpdate.as_view(), name="v2-applicant-update"),
+    path("v2/applicants/delete/<int:pk>", views_2.ApplicantDelete.as_view(), name="v2-applicant-delete"),
 ]
