@@ -8,9 +8,12 @@ GET HTTP request
 
 
 from django.views.generic import ListView
-from jobs.models import Applicant
+from jobs.models import Applicant, Portal
 
 
 class ApplicantList(ListView):
     model = Applicant
 
+
+class PortalList(ListView):
+    model = Portal

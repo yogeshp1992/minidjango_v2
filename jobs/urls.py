@@ -21,5 +21,6 @@ urlpatterns = [
     path("jobtitles/<int:job_id>/", views.get_job_description, name="jd"),
     path("welcomeview/", views.WelcomeView.as_view(), name="welcomeview"),
 
+    # class-based views using django generic views.
     path("v2/applicants/", views_2.ApplicantList.as_view(), name="applicant-list")
 ]
