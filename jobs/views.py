@@ -23,6 +23,7 @@ def get_portal_details(request):
     portals = []
     for obj in objs:
         portals.append(obj.name)
+
     return JsonResponse(portals, safe=False)
 
 
@@ -36,19 +37,19 @@ def get_job_description(request, job_id):
 #          single applicant (.../jobs/applicants/1)
 # TODO 3 - write an API endpoint to get list of applicants (.../jobs/jobtitles)
 
+
 @csrf_exempt
 def job_titles(request):
     """plural endpoint to get all job titles"""
 
     if request.method == "POST":
         data = json.loads(request.body)
-        breakpoint()
         # TODO - add validation for the request data.
 
         portal_data = data.get("portal")
         portal_name = portal_data.get("name")
         portal = Portal.objects.filter(name=portal_name)
-
+        breakpoint()
         if not portal:
             portal = Portal.objects.create(**portal_data)
             portal.save()
@@ -58,7 +59,6 @@ def job_titles(request):
         jd = data.get("job_description")
         jd_role = jd.get("role")
         jd_obj = JobDescription.objects.filter(role=jd_role)
-
         if not jd_obj:
             jd = JobDescription.objects.create(**jd)
             jd.save()
@@ -77,22 +77,6 @@ def job_titles(request):
             {"objects": job_titles}
         )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @csrf_exempt
 def job_titles(request):
     """plural endpoint to get all job titles"""
@@ -104,30 +88,25 @@ def job_titles(request):
         portal_data = data.get("portal")
         portal_name = portal_data.get("name")
         portal = Portal.objects.filter(name=portal_name)
-
-        if portal:
-            portal = Portal.objects.replace(**portal_data)
+        breakpoint()
+        if not portal:
+            portal = Portal.objects.update(description="good information")
             portal.save()
         else:
-            portal = Portal.objects.create(**portal_data)
-            portal.save()
-
+            portal = portal[0]
 
         jd = data.get("job_description")
         jd_role = jd.get("role")
         jd_obj = JobDescription.objects.filter(role=jd_role)
-
-        if jd_obj:
-            jd = JobDescription.objects.replace(**jd)
-            jd.save()
-        else:
+        if not jd_obj:
             jd = JobDescription.objects.create(**jd)
             jd.save()
-
+        else:
+            jd = jd_obj[0]
 
         data["job_description"] = jd
         data["portal"] = portal
-        jt = JobTitle.objects.replace(**data)
+        jt = JobTitle.objects.create(**data)
         jt.save()
 
         job_titles = JobTitle.objects.all()
@@ -136,7 +115,6 @@ def job_titles(request):
             "jobs/job_titles.html",
             {"objects": job_titles}
         )
-
 
 # TODO - write PATCH request for `job_title` resource
 # TODO - write DELETE request for job_title` resource
@@ -170,4 +148,3 @@ class WelcomeView(View):
     def patch(self, request):
         # write your PATCH request logic here
         return HttpResponse("welcome to PATCH request using class based view")
-
