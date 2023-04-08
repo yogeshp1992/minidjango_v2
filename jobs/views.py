@@ -42,6 +42,7 @@ def get_job_description(request, job_id):
 def job_titles(request):
     """plural endpoint to get all job titles"""
 
+
     if request.method == "POST":
         data = json.loads(request.body)
         # TODO - add validation for the request data.
@@ -59,6 +60,7 @@ def job_titles(request):
         jd = data.get("job_description")
         jd_role = jd.get("role")
         jd_obj = JobDescription.objects.filter(role=jd_role)
+
         if not jd_obj:
             jd = JobDescription.objects.create(**jd)
             jd.save()
@@ -77,44 +79,6 @@ def job_titles(request):
             {"objects": job_titles}
         )
 
-@csrf_exempt
-def job_titles(request):
-    """plural endpoint to get all job titles"""
-
-    if request.method == "PATCH":
-        data = json.loads(request.body)
-        # TODO - add validation for the request data.
-
-        portal_data = data.get("portal")
-        portal_name = portal_data.get("name")
-        portal = Portal.objects.filter(name=portal_name)
-        breakpoint()
-        if not portal:
-            portal = Portal.objects.update(description="good information")
-            portal.save()
-        else:
-            portal = portal[0]
-
-        jd = data.get("job_description")
-        jd_role = jd.get("role")
-        jd_obj = JobDescription.objects.filter(role=jd_role)
-        if not jd_obj:
-            jd = JobDescription.objects.create(**jd)
-            jd.save()
-        else:
-            jd = jd_obj[0]
-
-        data["job_description"] = jd
-        data["portal"] = portal
-        jt = JobTitle.objects.create(**data)
-        jt.save()
-
-        job_titles = JobTitle.objects.all()
-        return render(
-            request,
-            "jobs/job_titles.html",
-            {"objects": job_titles}
-        )
 
 # TODO - write PATCH request for `job_title` resource
 # TODO - write DELETE request for job_title` resource
