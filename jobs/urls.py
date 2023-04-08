@@ -33,6 +33,9 @@ urlpatterns = [
         "v3/applicants/",
         views_3.Applicants.as_view(),
         name="v3_applicants_list"
-    )
+    ),
+    path("v3/users/",
+         views_3.UserList.as_view(),
+         name="v3_users_list")
 
 ]
