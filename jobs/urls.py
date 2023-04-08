@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from . import views_2
+from . import views_3
 
 """
 <home-url>/jobs/welcome/
@@ -26,4 +27,12 @@ urlpatterns = [
     path("v2/applicants/create/", views_2.ApplicantCreate.as_view(), name="v2-applicant-create"),
     path("v2/applicants/update/<int:pk>", views_2.ApplicantUpdate.as_view(), name="v2-applicant-update"),
     path("v2/applicants/delete/<int:pk>", views_2.ApplicantDelete.as_view(), name="v2-applicant-delete"),
+
+    # V3 URLs (created for django-rest-framework using APIView)
+    path(
+        "v3/applicants/",
+        views_3.Applicants.as_view(),
+        name="v3_applicants_list"
+    )
+
 ]
