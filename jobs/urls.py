@@ -46,6 +46,12 @@ urlpatterns = [
         "v4/jobtitles",
         views_4.jobtitle_list,
         name="v4_jobtitles_list"
-    )
+    ),
+    path(
+        "v4/portals",
+        views_4.portal_list,
+        name="v4_portals_list"
+    ),
+
 
 ]
