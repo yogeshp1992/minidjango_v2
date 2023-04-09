@@ -28,6 +28,13 @@ class JobDescriptionSerializer(serializers.Serializer):
 
 
 class JobTitleSerializer(serializers.Serializer):
+    """
+    TODO
+    Refer following document nested serializer-
+    https://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects
+
+
+    """
 
     title = serializers.CharField(max_length=250)
     last_updated = serializers.DateTimeField(required=True)

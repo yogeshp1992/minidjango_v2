@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from . import views_2
 from . import views_3
+from . import views_4
 
 """
 <home-url>/jobs/welcome/
@@ -37,6 +38,14 @@ urlpatterns = [
     ),
     path("v3/users/",
          views_3.UserList.as_view(),
-         name="v3_users_list")
+         name="v3_users_list"),
+
+
+    # V4 URLs (created for job titles using DRF and serializers)
+    path(
+        "v4/jobtitles",
+        views_4.jobtitle_list,
+        name="v4_jobtitles_list"
+    )
 
 ]
