@@ -10,7 +10,7 @@ GET HTTP request
 """
 
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from jobs.models import Applicant, Portal
 
@@ -23,6 +23,16 @@ class ApplicantList(ListView):
     """
 
     model = Applicant
+
+
+class ApplicantDetailView(DetailView):
+    """
+     jobs/applicant_detail.html
+     """
+
+    model = Applicant
+    context_object_name = 'applicant'
+    queryset = Applicant.objects.all()
 
 
 class ApplicantCreate(CreateView):
